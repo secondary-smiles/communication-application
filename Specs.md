@@ -10,7 +10,7 @@
 
 Visible-user messages are standard messages sent from one user to another. 
 
-These are messages that will be directly shown to the user
+These messages that will be directly shown to the user
 
 ### Visible-server
 
@@ -46,7 +46,7 @@ Context messages are things like edits to an existing message, or a notice to th
 
 > \* required
 
-- Data *
+- [...data] *
 - Message ID -- (hash) *
 
 ### Visible-server Messages
@@ -102,7 +102,7 @@ Context messages are things like edits to an existing message, or a notice to th
 Data is sent via TOML file
 
 ```toml
-type
+[type]
 # Message type
 #...
 
