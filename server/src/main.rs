@@ -1,2 +1,4 @@
+mod messages;
+
 fn main() {
 }
