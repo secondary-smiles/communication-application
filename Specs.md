@@ -1,6 +1,6 @@
-# Chat-App Specifications
+# Communication-Application Specifications
 
-> These are the specifications for the chat app to follow, using TCP Sockets using [TOML](https://toml.io).
+> These are the specifications for a communication application to follow, using TCP Sockets and [TOML](https://toml.io).
 
 # Types of Messages
 
@@ -23,6 +23,8 @@ These are things like cooldowns, or system updates.
 These are messages that add context to messages if required.
 
 Context messages are things like edits to an existing message, or a notice to the client to delete a message.
+
+**Note: Context messages can also be used for things like terminating the socket connection.**
 
 ### Visible-user Messages
 
