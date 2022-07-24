@@ -1,1 +1,0 @@
-/Users/phantomphreak/Documents/Projects/Code/rust/chat_app/Specs.md
