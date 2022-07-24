@@ -21,5 +21,3 @@ The server will use a similar method to SSL certificates as outlined in [Specs.m
 >  These are specifications for a server loop to follow to handle all clients simultaneously.
 
 *Still figuring out the best system*
-
-
