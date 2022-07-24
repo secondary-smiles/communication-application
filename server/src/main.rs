@@ -1,6 +1,4 @@
 mod messages;
 mod security;
 
-fn main() {
-
-}
+fn main() {}

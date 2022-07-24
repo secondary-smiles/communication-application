@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use openssl::rsa::{Padding, Rsa};
 
 #[derive(Debug, PartialEq)]
@@ -53,19 +54,19 @@ pub fn new() -> Pem {
 
 #[cfg(test)]
 mod tests {
-    use crate::security::Pem;
+    use crate::security::pem;
 
     #[test]
     fn test_new_pem() {
-        let pem1 = Pem::new();
-        let pem2 = Pem::new();
+        let pem1 = pem::new();
+        let pem2 = pem::new();
 
         assert_ne!(pem1, pem2)
     }
 
     #[test]
     fn test_pem_encrypt_and_decrypt() {
-        let pem = Pem::new();
+        let pem = pem::new();
         let data = "The quick brown fox jumps over the lazy dog";
         let e = pem.encrypt(data);
         let e_string = format!("{:?}", e);
