@@ -40,6 +40,11 @@ impl Pem {
         let r = format!("{}\n{}", self.public, self.private);
         r
     }
+
+    pub fn toml(&self) -> String {
+        let toml = toml::to_string_pretty(self).unwrap();
+        toml.to_string()
+    }
 }
 
 pub fn new() -> Pem {
@@ -75,5 +80,14 @@ mod tests {
 
         assert_ne!(e_string, format!("{:?}", data));
         assert_eq!(d, data);
+    }
+
+    #[test]
+    fn test_pem_toml() {
+        let pem1 = pem::new();
+        let toml = pem1.toml();
+        let pem2: pem::Pem = toml::from_str(&toml).unwrap();
+
+        assert_eq!(pem1, pem2);
     }
 }

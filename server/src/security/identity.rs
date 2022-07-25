@@ -21,6 +21,13 @@ struct Private {
     pem: pem::Pem,
 }
 
+impl Identity {
+    pub fn toml(&self) -> String {
+        let toml = toml::to_string_pretty(self).unwrap();
+        toml.to_string()
+    }
+}
+
 pub fn new() -> Identity {
     let pem = pem::new();
     let cert = cert::new(&pem);
@@ -44,6 +51,7 @@ pub fn new() -> Identity {
 #[cfg(test)]
 mod tests {
     use crate::security::identity;
+    use toml;
 
     #[test]
     fn test_create_id() {
@@ -52,5 +60,14 @@ mod tests {
 
         assert_ne!(id1.public.cert.hash, id2.public.cert.hash);
         assert_ne!(id1.private.pem.data(), id2.private.pem.data());
+    }
+
+    #[test]
+    fn test_id_toml() {
+        let id1 = identity::new();
+        let toml = id1.toml();
+        let id2: identity::Identity = toml::from_str(&toml).unwrap();
+
+        assert_eq!(id1, id2);
     }
 }

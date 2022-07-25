@@ -16,6 +16,13 @@ pub struct Cert {
     pub expire: Datetime,
 }
 
+impl Cert {
+    pub fn toml(&self) -> String {
+        let toml = toml::to_string_pretty(self).unwrap();
+        toml.to_string()
+    }
+}
+
 pub fn new(pem: &pem::Pem) -> Cert {
     let now: DateTime<Utc> = Utc::now();
     let now_year = now
@@ -53,5 +60,15 @@ mod tests {
         assert_ne!(cert1, cert2);
         assert_ne!(cert1.key, cert2.key);
         assert_ne!(cert1.hash, cert2.hash);
+    }
+
+    #[test]
+    fn test_cert_toml() {
+        let pem = pem::new();
+        let cert1 = cert::new(&pem);
+        let toml = cert1.toml();
+        let cert2: cert::Cert = toml::from_str(&toml).unwrap();
+
+        assert_eq!(cert1, cert2);
     }
 }
