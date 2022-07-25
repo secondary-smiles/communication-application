@@ -1,10 +1,10 @@
-[![Rust Fmt](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-fmt.yml/badge.svg)](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-fmt.yml)
 [![Rust Build](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-build.yml/badge.svg)](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-build.yml)
+[![Rust Fmt](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-fmt.yml/badge.svg)](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-fmt.yml)
 
-``` text
 ===========================
-A toy communication application written in Rust.
 
-See Specs.md for details
+A new experimental method for commuication between a server and client using TOML structured data.
+
+See [Specs.md](https://github.com/secondary-smiles/communication-application/blob/master/Specs.md) for details
+
 ===========================
-```
