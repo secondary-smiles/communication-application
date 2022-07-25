@@ -46,8 +46,8 @@ pub fn new() -> Identity {
 #[cfg(test)]
 mod tests {
     use crate::security::identity;
-    use toml;
     use blake3;
+    use toml;
 
     #[test]
     fn test_create_id() {

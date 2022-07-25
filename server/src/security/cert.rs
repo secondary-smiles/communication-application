@@ -75,6 +75,9 @@ mod tests {
         let hash = blake3::hash(hash_cert.toml().as_bytes()).to_string();
 
         assert_eq!(cert.signature, hash);
-        assert_ne!(cert.signature, blake3::hash(cert.toml().as_bytes()).to_string());
+        assert_ne!(
+            cert.signature,
+            blake3::hash(cert.toml().as_bytes()).to_string()
+        );
     }
 }

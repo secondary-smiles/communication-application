@@ -25,4 +25,4 @@ jobs:
         run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
       - name: Run fmt
         working-directory: ./server
-        run: cargo fmt --all
+        run: cargo fmt --all -- --check
