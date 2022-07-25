@@ -36,10 +36,6 @@ pub fn new(pem: &pem::Pem) -> Cert {
     let mut cert: Cert = toml::from_str(&cert_preparse).unwrap();
     let hash = blake3::hash(cert.toml().as_bytes());
     cert.signature = hash.to_string();
-    let posthash = toml::to_string(&cert).unwrap();
-    let hash = blake3::hash(posthash.as_bytes());
-
-    cert.signature = hash.to_string();
 
     cert
 }
@@ -68,5 +64,17 @@ mod tests {
         let cert2: cert::Cert = toml::from_str(&toml).unwrap();
 
         assert_eq!(cert1, cert2);
+    }
+
+    #[test]
+    fn test_hash_verify() {
+        let pem = pem::new();
+        let cert = cert::new(&pem);
+        let mut hash_cert = cert.clone();
+        hash_cert.signature = "".to_string();
+        let hash = blake3::hash(hash_cert.toml().as_bytes()).to_string();
+
+        assert_eq!(cert.signature, hash);
+        assert_ne!(cert.signature, blake3::hash(cert.toml().as_bytes()).to_string());
     }
 }
