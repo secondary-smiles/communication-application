@@ -1,7 +1,8 @@
 #![allow(dead_code)]
 use openssl::rsa::{Padding, Rsa};
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Deserialize, Serialize)]
 pub struct Pem {
     pub public: String,
     private: String,

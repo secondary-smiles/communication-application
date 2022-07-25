@@ -266,6 +266,18 @@ m_TO = "Hey! (sorry I typed that wrong)" # In this case, m_TO is what the client
 
 > How will messages be sent from the server to the client and vice-versa in a way that is secure and keeps the users data private?
 
-I have a lot to learn in this field, but for now, security will be based off the information in the image. [An SSL Conversation Between Computer and Server](https://imgur.com/gallery/5T2fJsG)
+Security will be based off the information in the image. [An SSL Conversation Between Computer and Server](https://imgur.com/gallery/5T2fJsG)
 
-![SSL diagram](https://i.imgur.com/5T2fJsG.png "An SSL conversation between Computer and Server")
+## The Secure Loop Handshake
+
+> This details the secure loop that will be used with every connection to determine both parties are who they claim to be.
+
+1. The client connects with the server and requests its public identity.
+
+2. The server sends its public identity over.
+
+3. The client reads the ID and compares the hash and key with its own copy.
+
+4. If the client can verify the server, it will encrypt its own ID and a symmetrical key that will be used for further messages between the server and client.
+
+5. The server will attempt to identify the client and if it can, it will continue the connection to the normal interface.
