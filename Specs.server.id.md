@@ -58,13 +58,13 @@ The basic structure of a Cert is this
 
 ```toml
 key = "" # The public sde of a Pem key
-hash = "" # The hash of the entire Cert
+signature = "" # The hash of the entire Cert
 expire = "" # The date this Cert expires and new one must be generated for the client
 ```
 
 - `Key` is the public key of a the Pem.
 
-- `Hash` is a hash of the entire Cert.
+- `Signature` is a hash of the entire Cert.
 
 - `Expire` is the date on that the Cert will have to be recalculated by.
 
@@ -78,7 +78,7 @@ id = "" # This is the unique id of the Identity
 
 [public.cert]
 key = ""
-hash = ""
+signature = ""
 expire = ""
 
 [private.pem]
@@ -88,4 +88,4 @@ private = ''
 
 ### ID
 
-The ID is a hash of the entire ID similar to how the `hash` field works in a Cert.
+The ID is a hash of the entire ID similar to how the `signature` field works in a Cert.

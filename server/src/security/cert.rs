@@ -12,7 +12,7 @@ use crate::security::pem;
 #[derive(Debug, PartialEq, Deserialize, Serialize)]
 pub struct Cert {
     pub key: String,
-    pub hash: String,
+    pub signature: String,
     pub expire: Datetime,
 }
 
@@ -30,16 +30,16 @@ pub fn new(pem: &pem::Pem) -> Cert {
         .to_rfc3339();
 
     let cert_preparse = format!(
-        "key = '''{}'''\nhash = ''\nexpire = {}\n",
+        "key = '''{}'''\nsignature = ''\nexpire = {}\n",
         pem.public, now_year
     );
     let mut cert: Cert = toml::from_str(&cert_preparse).unwrap();
     let hash = blake3::hash(cert.toml().as_bytes());
-    cert.hash = hash.to_string();
+    cert.signature = hash.to_string();
     let posthash = toml::to_string(&cert).unwrap();
     let hash = blake3::hash(posthash.as_bytes());
 
-    cert.hash = hash.to_string();
+    cert.signature = hash.to_string();
 
     cert
 }
@@ -57,7 +57,7 @@ mod tests {
 
         assert_ne!(cert1, cert2);
         assert_ne!(cert1.key, cert2.key);
-        assert_ne!(cert1.hash, cert2.hash);
+        assert_ne!(cert1.signature, cert2.signature);
     }
 
     #[test]

@@ -57,7 +57,7 @@ mod tests {
         let id1 = identity::new();
         let id2 = identity::new();
 
-        assert_ne!(id1.public.cert.hash, id2.public.cert.hash);
+        assert_ne!(id1.public.cert.signature, id2.public.cert.signature);
         assert_ne!(id1.private.pem.data(), id2.private.pem.data());
     }
 
