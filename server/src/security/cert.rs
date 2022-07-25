@@ -18,8 +18,7 @@ pub struct Cert {
 
 impl Cert {
     pub fn toml(&self) -> String {
-        let toml = toml::to_string_pretty(self).unwrap();
-        toml.to_string()
+        toml::to_string_pretty(self).unwrap()
     }
 }
 
@@ -35,8 +34,7 @@ pub fn new(pem: &pem::Pem) -> Cert {
         pem.public, now_year
     );
     let mut cert: Cert = toml::from_str(&cert_preparse).unwrap();
-    let prehash = format!("{:?}", cert);
-    let hash = blake3::hash(prehash.as_bytes());
+    let hash = blake3::hash(cert.toml().as_bytes());
     cert.hash = hash.to_string();
     let posthash = toml::to_string(&cert).unwrap();
     let hash = blake3::hash(posthash.as_bytes());

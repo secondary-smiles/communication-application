@@ -23,8 +23,7 @@ struct Private {
 
 impl Identity {
     pub fn toml(&self) -> String {
-        let toml = toml::to_string_pretty(self).unwrap();
-        toml.to_string()
+        toml::to_string_pretty(self).unwrap()
     }
 }
 
