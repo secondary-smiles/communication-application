@@ -1,4 +1,5 @@
-[![Rust](https://github.com/secondary-smiles/chat-app/actions/workflows/rust.yml/badge.svg)](https://github.com/secondary-smiles/chat-app/actions/workflows/rust.yml)
+[![Rust](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-fmt.yml/badge.svg)](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-fmt.yml)
+[![Rust Build](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-build.yml/badge.svg)](https://github.com/secondary-smiles/communication-application/actions/workflows/rust-build.yml)
 
 ``` text
 ===========================
