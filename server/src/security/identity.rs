@@ -4,19 +4,19 @@ use crate::security::{cert, pem};
 use serde::{Deserialize, Serialize};
 use toml;
 
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Deserialize, Serialize, PartialEq, Clone)]
 pub struct Identity {
     pub public: Public,
     private: Private,
 }
 
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Deserialize, Serialize, PartialEq, Clone)]
 pub struct Public {
     pub id: String,
     pub cert: cert::Cert,
 }
 
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Deserialize, Serialize, PartialEq, Clone)]
 struct Private {
     pem: pem::Pem,
 }
@@ -37,11 +37,7 @@ pub fn new() -> Identity {
         private: Private { pem },
     };
 
-    let toml_for_hash = toml::to_string(&identity).unwrap();
-    let hash = blake3::hash(toml_for_hash.as_bytes());
-    identity.public.id = hash.to_string();
-    let toml_for_hash = toml::to_string(&identity).unwrap();
-    let hash = blake3::hash(toml_for_hash.as_bytes());
+    let hash = blake3::hash(identity.toml().as_bytes());
     identity.public.id = hash.to_string();
 
     identity
@@ -51,6 +47,7 @@ pub fn new() -> Identity {
 mod tests {
     use crate::security::identity;
     use toml;
+    use blake3;
 
     #[test]
     fn test_create_id() {
@@ -68,5 +65,16 @@ mod tests {
         let id2: identity::Identity = toml::from_str(&toml).unwrap();
 
         assert_eq!(id1, id2);
+    }
+
+    #[test]
+    fn test_hash_verify() {
+        let id = identity::new();
+        let mut hash_id = id.clone();
+        hash_id.public.id = "".to_string();
+        let hash = blake3::hash(hash_id.toml().as_bytes()).to_string();
+
+        assert_eq!(id.public.id, hash);
+        assert_ne!(id.public.id, blake3::hash(id.toml().as_bytes()).to_string());
     }
 }

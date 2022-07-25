@@ -9,7 +9,7 @@ use chrono::{DateTime, Duration, Utc};
 
 use crate::security::pem;
 
-#[derive(Debug, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Deserialize, Serialize, Clone)]
 pub struct Cert {
     pub key: String,
     pub signature: String,

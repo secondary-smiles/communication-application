@@ -2,7 +2,7 @@
 use openssl::rsa::{Padding, Rsa};
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, PartialEq, Deserialize, Serialize, Clone)]
 pub struct Pem {
     pub public: String,
     private: String,
