@@ -88,4 +88,4 @@ private = ''
 
 ### ID
 
-The ID is a hash of the server Identity minus the ID, similar to how the `hash` field works in a Cert.
+The ID is a hash of the entire ID similar to how the `hash` field works in a Cert.

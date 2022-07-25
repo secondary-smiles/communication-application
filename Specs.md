@@ -125,8 +125,8 @@ kind = "VIS-USER"
 
 [head]
 sent = 1979-05-27T07:32:00Z
-s_ID = "USER-b3daa77b4c04a9551b8781d03191fe098f325e67" # Sender ID is a SHA1 hash
-r_ID = "USER-a1881c06eec96db9901c7bbfe41c42a3f08e9cb4" # Receiver ID is also a SHA1 hash
+s_ID = "USER-b3daa77b4c04a9551b8781d03191fe098f325e67" # Sender ID is a hash, it comes from their Identity
+r_ID = "USER-a1881c06eec96db9901c7bbfe41c42a3f08e9cb4" # Receiver ID is also a hash it too comes from the account Identity
 size = 0x14 # Hexadecimal for conciseness
 edited = false
 kind = "text/plain" # A custom subset of MIME Types are used for the message type
@@ -174,7 +174,7 @@ kind = "VIS-USER"
 
 [head]
 sent = 1979-05-27T07:32:00Z
-s_ID = "SERVER-3de4f901fffb30ac720b0e7eb654b4faa2dd03fa" # This identifies the server as a real server rather than just another user
+s_ID = "SERVER-3de4f901fffb30ac720b0e7eb654b4faa2dd03fa"
 r_ID = "USER-b3daa77b4c04a9551b8781d03191fe098f325e67"
 size = 0x44
 kind = "alert/cooldown"
