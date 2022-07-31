@@ -1,20 +1,20 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use toml::value::*;
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Message {
     pub kind: Kind,
     pub head: Head,
     pub body: Body,
 }
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Kind {
     pub kind: String,
 }
 
 #[allow(non_snake_case)]
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Head {
     pub sent: Option<Datetime>,
     pub s_ID: String,
@@ -25,7 +25,7 @@ pub struct Head {
 }
 
 #[allow(non_snake_case)]
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Serialize, Debug)]
 pub struct Body {
     pub data: Option<String>,
     pub alert: Option<String>,

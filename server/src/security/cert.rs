@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+
 use blake3;
 use toml;
 
@@ -19,6 +20,16 @@ pub struct Cert {
 impl Cert {
     pub fn toml(&self) -> String {
         toml::to_string_pretty(self).unwrap()
+    }
+
+    pub fn verify(&self) -> bool {
+        let mut hash_cert = self.clone();
+        hash_cert.signature = "".to_string();
+        let hash = blake3::hash(hash_cert.toml().as_bytes()).to_string();
+        if hash == self.signature {
+            return true;
+        }
+        false
     }
 }
 
