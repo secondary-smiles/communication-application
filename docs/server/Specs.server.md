@@ -1,10 +1,10 @@
 # Server
 
-> These are specifications for a server loop to follow in accordance with [Specs.md](./Specs.md)
+> These are specifications for a server loop to follow in accordance with [Specs.md](../Specs.md)
 
 # Security
 
-The server will use a similar method to SSL certificates as outlined in [Specs.md](./Specs.md).
+The server will use a similar method to SSL certificates as outlined in [Specs.md](../Specs.md).
 
 1) The client will request the server's public key.
 

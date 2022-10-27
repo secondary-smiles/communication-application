@@ -1,3 +1,7 @@
+## Custom ##
+# Clion project dirs
+.idea
+
 # Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,rust
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,rust
 
